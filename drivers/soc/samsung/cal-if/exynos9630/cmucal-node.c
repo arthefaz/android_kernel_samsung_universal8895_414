@@ -786,6 +786,9 @@ enum clk_id cmucal_mux_hchgen_clk_aud_cpu_parents[] = {
 	OSCCLK_AUD,
 };
 unsigned int cmucal_mux_size = 188;
+
+_Pragma("GCC diagnostic push")
+_Pragma("GCC diagnostic ignored \"-Wsizeof-pointer-div\"")
 struct cmucal_mux cmucal_mux_list[] = {
 	CLK_MUX(MUX_CLKCMU_CMGP_BUS, cmucal_mux_clkcmu_cmgp_bus_parents, CLK_CON_MUX_MUX_CLKCMU_CMGP_BUS_SELECT, CLK_CON_MUX_MUX_CLKCMU_CMGP_BUS_BUSY, CLK_CON_MUX_MUX_CLKCMU_CMGP_BUS_ENABLE_AUTOMATIC_CLKGATING),
 	CLK_MUX(MUX_CLK_APM_BUS, cmucal_mux_clk_apm_bus_parents, CLK_CON_MUX_MUX_CLK_APM_BUS_SELECT, CLK_CON_MUX_MUX_CLK_APM_BUS_BUSY, CLK_CON_MUX_MUX_CLK_APM_BUS_ENABLE_AUTOMATIC_CLKGATING),
@@ -976,6 +979,7 @@ struct cmucal_mux cmucal_mux_list[] = {
 	CLK_MUX(MUX_CLKCMU_VTS_RCO_USER, cmucal_mux_clkcmu_vts_rco_user_parents, PLL_CON0_MUX_CLKCMU_VTS_RCO_USER_MUX_SEL, PLL_CON0_MUX_CLKCMU_VTS_RCO_USER_BUSY, PLL_CON1_MUX_CLKCMU_VTS_RCO_USER_ENABLE_AUTOMATIC_CLKGATING),
 	CLK_MUX(MUX_HCHGEN_CLK_AUD_CPU, cmucal_mux_hchgen_clk_aud_cpu_parents, EMPTY_CAL_ID, CLK_CON_MUX_MUX_HCHGEN_CLK_AUD_CPU_BUSY, CLK_CON_MUX_MUX_HCHGEN_CLK_AUD_CPU_ENABLE_AUTOMATIC_CLKGATING),
 };
+_Pragma("GCC diagnostic pop")
 
 unsigned int cmucal_div_size = 138;
 struct cmucal_div cmucal_div_list[] = {

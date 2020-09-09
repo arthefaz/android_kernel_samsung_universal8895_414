@@ -2201,6 +2201,8 @@ struct vclk_switch vclk_switch_blk_cpucl1[] = {
 
 /*=================VCLK list================================*/
 
+_Pragma("GCC diagnostic push")
+_Pragma("GCC diagnostic ignored \"-Wsizeof-pointer-div\"")
 struct vclk cmucal_vclk_list[] = {
 
 /* DVFS VCLK */
@@ -2696,5 +2698,7 @@ struct vclk cmucal_vclk_list[] = {
 	CMUCAL_VCLK(VCLK_DMIC_IF, NULL, cmucal_vclk_dmic_if, NULL, NULL),
 	CMUCAL_VCLK(VCLK_u_DMIC_CLK_MUX, NULL, cmucal_vclk_u_dmic_clk_mux, NULL, NULL),
 };
+_Pragma("GCC diagnostic pop")
+
 unsigned int cmucal_vclk_size = 485;
 

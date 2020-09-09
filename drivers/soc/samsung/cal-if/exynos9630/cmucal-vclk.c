@@ -3031,6 +3031,9 @@ struct vclk_switch switch_vdd_cam[] = {
 
 /*================================ VCLK List =================================*/
 unsigned int cmucal_vclk_size = 788;
+
+_Pragma("GCC diagnostic push")
+_Pragma("GCC diagnostic ignored \"-Wsizeof-pointer-div\"")
 struct vclk cmucal_vclk_list[] = {
 
 /* DVFS VCLK*/
@@ -3829,3 +3832,4 @@ struct vclk cmucal_vclk_list[] = {
 	CMUCAL_VCLK(VCLK_IP_DMIC_IF_3RD, NULL, cmucal_vclk_ip_dmic_if_3rd, NULL, NULL),
 	CMUCAL_VCLK(VCLK_IP_U_DMIC_CLK_SCAN_MUX, NULL, cmucal_vclk_ip_u_dmic_clk_scan_mux, NULL, NULL),
 };
+_Pragma("GCC diagnostic pop")
