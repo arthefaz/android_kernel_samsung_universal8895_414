@@ -528,7 +528,7 @@ struct cmucal_clkout {
 	.ignore_idx     = _ig,                          \
 }
 #else
-#define CLK_QCH(_id, _o, _so, _eo, _ig)			\
+#define CLK_QCH(_id, _o, _so, _eo)			\
 [_id & MASK_OF_ID] = {	\
 	.clk.id		= _id,				\
 	.clk.name	= #_id,				\
