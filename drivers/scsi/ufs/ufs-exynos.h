@@ -15,6 +15,8 @@
 #include <linux/pm_qos.h>
 #ifdef CONFIG_SOC_EXYNOS9610
 #include "ufs-cal-9610.h"
+#elif CONFIG_SOC_EXYNOS8895
+#include "ufs-cal-8895.h"
 #else
 #include "ufs-cal-9810.h"
 #endif
