@@ -113,6 +113,16 @@
 		cpu_on = <0xC4000003>;
 	};
 
+	exynos-pmu {
+		compatible = "samsung,exynos-pmu";
+		samsung,syscon-phandle = <&pmu_system_controller>;
+	};
+
+	pmu_system_controller: system-controller@16480000 {
+		compatible = "samsung,exynos8895-pmu", "syscon";
+		reg = <0x0 0x16480000 0x10000>;
+	};
+
 	gic:interrupt-controller@10200000 {
 		compatible = "arm,cortex-a15-gic", "arm,cortex-a9-gic";
 		#interrupt-cells = <3>;
