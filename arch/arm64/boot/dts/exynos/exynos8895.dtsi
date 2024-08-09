@@ -1767,6 +1767,16 @@
 		index = <0>; /* if little cluster then index is 0*/
 	};
 
+	sec_pwm: pwm@104c0000 {
+		compatible = "samsung,s3c6400-pwm";
+		reg = <0x0 0x104c0000 0x1000>;
+		samsung,pwm-outputs = <0>, <1>, <2>, <3>, <4>;
+		#pwm-cells = <3>;
+		clocks = <&clock UMUX_CLKCMU_PERIC0_BUS>, <&clock OSCCLK>;
+		clock-names = "pwm_pclk", "pwm_sclk";
+		status = "ok";
+	};
+
 	rtc@16490000 {
 		compatible = "samsung,exynos8-rtc";
 		reg = <0x0 0x16490000 0x100>;
