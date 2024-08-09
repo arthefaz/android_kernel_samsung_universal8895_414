@@ -260,4 +260,15 @@
 		clock-names = "gate_pclk0", "gate_uart0";
 		status = "disabled";
 	};
+
+	watchdog@10060000 {
+		compatible = "samsung,exynos8-wdt";
+		reg = <0x0 0x10060000 0x100>;
+		interrupts = <0 454 0>;
+		clocks = <&clock OSCCLK>, <&clock UMUX_CLKCMU_PERIS_BUS>;
+		clock-names = "rate_watchdog", "gate_watchdog";
+		timeout-sec = <30>;
+		samsung,syscon-phandle = <&pmu_system_controller>;
+		index = <0>; /* if little cluster then index is 0*/
+	};
 };
