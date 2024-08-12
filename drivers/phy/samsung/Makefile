@@ -14,6 +14,7 @@ obj-$(CONFIG_PHY_EXYNOS5_USBDRD)	+= phy-exynos5-usbdrd.o
 obj-$(CONFIG_PHY_EXYNOS_DEBUGFS)       += phy-exynos-debugfs.o
 obj-$(CONFIG_PHY_EXYNOS_DEBUGFS)       += phy-exynos-dp-debugfs.o
 obj-$(CONFIG_PHY_EXYNOS_USBDRD)		+= phy-exynos-usbdrd.o
+obj-$(CONFIG_PHY_EXYNOS_USBDRD_LEGACY)	+= phy-exynos-usbdrd-legacy.o
 obj-$(CONFIG_PHY_EXYNOS_USBDRD3)	+= phy-exynos-usbdrd3.o
 obj-$(CONFIG_PHY_EXYNOS_DEBUGFS)	+= phy-exynos-debugfs.o
 obj-$(CONFIG_PHY_SAMSUNG_USB_CAL)      += phy-exynos-usb3p1.o phy-exynos-usbdp.o
