@@ -98,6 +98,7 @@ obj-$(CONFIG_REGULATOR_S2MPU09) += s2mpu09-regulator.o
 obj-$(CONFIG_REGULATOR_S2MPU10) += s2mpu10-regulator.o
 obj-$(CONFIG_REGULATOR_S2MPU11) += s2mpu11-regulator.o
 obj-$(CONFIG_REGULATOR_S2MPU12) += s2mpu12-regulator.o
+obj-$(CONFIG_REGULATOR_S2MPS17) += s2mps17.o s2mps17_powermeter.o
 obj-$(CONFIG_DRV_SAMSUNG_PMIC) += pmic_class.o
 obj-$(CONFIG_REGULATOR_S2MPB02) += s2mpb02-regulator.o
 obj-$(CONFIG_REGULATOR_S2MPB03) += s2mpb03.o
