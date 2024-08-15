@@ -139,6 +139,10 @@
 		status = "okay";
 	};
 
+	exynos_rgt {
+		compatible = "samsung,exynos-rgt";
+	};
+
 	pinctrl@164B0000 {
 		key_wink: key-wink {
 			samsung,pins = "gpa0-6";
