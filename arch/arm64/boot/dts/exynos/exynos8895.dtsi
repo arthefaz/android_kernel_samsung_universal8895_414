@@ -15,6 +15,7 @@
 
 #include <dt-bindings/clock/exynos8895.h>
 #include <dt-bindings/ufs/ufs.h>
+#include <dt-bindings/sysmmu/sysmmu.h>
 #include "exynos8895-pinctrl.dtsi"
 
 / {
@@ -1751,6 +1752,118 @@
 		status = "disabled";
 	};
 
+	sysmmu_g2d_0: sysmmu@13A60000 {
+		compatible = "samsung,exynos-sysmmu";
+		reg = <0x0 0x13A60000 0x3000>;
+		interrupts = <0 215 0>, <0 216 0>;
+		/*
+		clock-names = "aclk";
+		clocks = <&clock GATE_SMMU_G2DD0>;
+		 */
+		port-name = "G2D0";
+		sysmmu,secure-irq;
+		sysmmu,secure_base = <0x13A80000>;
+		#iommu-cells = <0>;
+	};
+	sysmmu_g2d_1: sysmmu@13A70000 {
+		compatible = "samsung,exynos-sysmmu";
+		reg = <0x0 0x13A70000 0x3000>;
+		interrupts = <0 218 0>, <0 219 0>;
+		/*
+		clock-names = "aclk";
+		clocks = <&clock GATE_SMMU_G2DD1>;
+		 */
+		port-name = "G2D1";
+		sysmmu,secure-irq;
+		sysmmu,secure_base = <0x13A90000>;
+		#iommu-cells = <0>;
+	};
+
+	iommu-domain_vpu {
+		compatible = "samsung,exynos-iommu-bus";
+		#dma-address-cells = <1>;
+		#dma-size-cells = <1>;
+		/* start address, size */
+		dma-window = <0x30000000 0xA0000000>;
+
+		domain-clients = <>;
+	};
+
+	sysmmu_vpu: sysmmu@13250000 {
+		compatible = "samsung,exynos-sysmmu";
+		reg = <0x0 0x13250000 0x3000>;
+		interrupts = <0 194 0>, <0 195 0>;
+		/*
+		clock-names = "aclk";
+		clocks = <&clock GATE_SMMU_VPU>;
+		 */
+		port-name = "VPU";
+		sysmmu,secure-irq;
+		sysmmu,secure_base = <0x13240000>;
+		/*
+		sysmmu,tlb_property =
+		 */
+		#iommu-cells = <0>;
+	};
+
+	iommu-domain_disp {
+		compatible = "samsung,exynos-iommu-bus";
+		#address-cells = <2>;
+		#size-cells = <1>;
+		ranges;
+
+		domain-clients = <>;
+	};
+
+	sysmmu_dpu0: sysmmu@12900000 {
+		compatible = "samsung,exynos-sysmmu";
+		reg = <0x0 0x12900000 0x3000>;
+		interrupts = <0 152 0>, <0 153 0>;
+		/*
+		clock-names = "aclk";
+		clocks = <&clock GATE_SYSMMU_DPUD0>;
+		 */
+		port-name = "DPU0 (VGR, VGF)";
+		sysmmu,secure-irq;
+		sysmmu,secure_base = <0x12930000>;
+		/*
+		sysmmu,tlb_property =
+		 */
+		#iommu-cells = <0>;
+	};
+	sysmmu_dpu1: sysmmu@12910000 {
+		compatible = "samsung,exynos-sysmmu";
+		reg = <0x0 0x12910000 0x3000>;
+		interrupts = <0 155 0>, <0 156 0>;
+		/*
+		clock-names = "aclk";
+		clocks = <&clock GATE_SYSMMU_DPUD1>;
+		 */
+		port-name = "DPU1 (G0, VG0)";
+		sysmmu,secure-irq;
+		sysmmu,secure_base = <0x12940000>;
+		/*
+		sysmmu,tlb_property =
+		 */
+		#iommu-cells = <0>;
+	};
+	sysmmu_dpu2: sysmmu@12920000 {
+		compatible = "samsung,exynos-sysmmu";
+		reg = <0x0 0x12920000 0x3000>;
+		interrupts = <0 158 0>, <0 159 0>;
+		/*
+		clock-names = "aclk";
+		clocks = <&clock GATE_SYSMMU_DPUD2>;
+		 */
+		port-name = "DPU2 (G1, VG1, WB)";
+		sysmmu,secure-irq;
+		sysmmu,secure_base = <0x12950000>;
+		/*
+		sysmmu,tlb_property =
+		 */
+		#iommu-cells = <0>;
+	};
+
 	exynos_adc: adc@15B70000 {
 		compatible = "samsung,exynos-adc-v3";
 		reg = <0x0 0x15B70000 0x100>;
@@ -1759,6 +1872,41 @@
 		io-channel-ranges;
 		clocks = <&clock GATE_ADCIF_BUSC_S0>;
 		clock-names = "gate_adcif";
+	};
+
+	iommu-domain_g2d {
+		compatible = "samsung,exynos-iommu-bus";
+		#address-cells = <2>;
+		#size-cells = <1>;
+		ranges;
+
+		domain-clients = <>;
+	};
+
+	iommu-domain_smfc_scaler {
+		compatible = "samsung,exynos-iommu-bus";
+		#address-cells = <2>;
+		#size-cells = <1>;
+		ranges;
+
+		domain-clients = <>;
+	};
+
+	sysmmu_g2d_2: sysmmu@13B50000 {
+		compatible = "samsung,exynos-sysmmu";
+		reg = <0x0 0x13B50000 0x3000>;
+		interrupts = <0 221 0>, <0 222 0>;
+		/*
+		clock-names = "aclk";
+		clocks = <&clock GATE_SMMU_G2DD2>;
+		 */
+		port-name = "Scaler, SMFC";
+		sysmmu,secure-irq;
+		sysmmu,secure_base = <0x13B60000>;
+		/*
+		sysmmu,tlb_property =
+		 */
+		#iommu-cells = <0>;
 	};
 
 	watchdog@10060000 {
@@ -1870,6 +2018,194 @@
 
 		#phy-cells = <1>;
 		ranges;
+	};
+
+	iommu-domain_aud {
+		compatible = "samsung,exynos-iommu-bus";
+		#address-cells = <2>;
+		#size-cells = <1>;
+		ranges;
+		domain-clients = <>;
+	};
+
+	sysmmu_aud0: sysmmu@13E30000 {
+		compatible = "samsung,exynos-sysmmu";
+		reg = <0x0 0x13E30000 0x3000>;
+		interrupts = <0 445 0>;
+		/*
+		clock-names = "aclk";
+		clocks = <&clock GATE_SMMU_ABOX>;
+		 */
+		port-name = "Abox";
+		/*
+		sysmmu,tlb_property =
+		 */
+		#iommu-cells = <0>;
+	};
+
+	iommu-domain_mfc {
+		compatible = "samsung,exynos-iommu-bus";
+		#address-cells = <2>;
+		#size-cells = <1>;
+		domain-clients = <>;
+	};
+
+	sysmmu_mfc0_0: sysmmu@0x13c80000 {
+		compatible = "samsung,exynos-sysmmu";
+		reg = <0x0 0x13c80000 0x3000>;
+		interrupts = <0 198 0>, <0 199 0>;
+		/*
+		clock-names = "aclk";
+		clocks = <&clock GATE_SMMU_MFCD0>;
+		 */
+		port-name = "MFC0";
+		sysmmu,secure-irq;
+		sysmmu,secure_base = <0x13C90000>;
+		/*
+		sysmmu,tlb_property =
+		 */
+		#iommu-cells = <0>;
+	};
+
+	sysmmu_mfc0_1: sysmmu@0x13ca0000 {
+		compatible = "samsung,exynos-sysmmu";
+		reg = <0x0 0x13ca0000 0x3000>;
+		interrupts = <0 201 0>, <0 202 0>;
+		/*
+		clock-names = "aclk";
+		clocks = <&clock GATE_SMMU_MFCD1>;
+		 */
+		port-name = "MFC1";
+		sysmmu,secure-irq;
+		sysmmu,secure_base = <0x13CB0000>;
+		/*
+		sysmmu,tlb_property =
+		 */
+		#iommu-cells = <0>;
+	};
+
+    sysmmu_iva: sysmmu@13530000 {
+		compatible = "samsung,exynos-sysmmu";
+		reg = <0x0 0x13530000 0x3000>;
+		interrupts = <0 240 0>;
+		/*
+		clock-names = "aclk";
+		clocks = <&clock GATE_SMMU_IVA>;
+		 */
+		#iommu-cells = <0>;
+    };
+
+#if 0
+	iommu-domain_score {
+		compatible = "samsung,exynos-iommu-bus";
+		#address-cells = <2>;
+		#size-cells = <1>;
+		ranges;
+
+		domain-clients = <>;
+	};
+#endif
+	iommu-domain_iva_score {
+		compatible = "samsung,exynos-iommu-bus";
+		#dma-address-cells = <1>;
+		#dma-size-cells = <1>;
+
+		/* start address, size : 0x80000000 - bug*/
+		dma-window = <0x80000000 0x70000000>;
+
+		domain-clients = <>;
+	};
+
+	sysmmu_score0: sysmmu@13430000 {
+		compatible = "samsung,exynos-sysmmu";
+		reg = <0x0 0x13430000 0x3000>;
+		interrupts = <0 230 0>, <0 231 0>;
+		/*
+		clock-names = "aclk";
+		clocks = <&clock GATE_SMMU_SCORE>;
+		 */
+		port-name = "Score";
+		sysmmu,secure-irq;
+		sysmmu,secure_base = <0x13450000>;
+		/*
+		sysmmu,tlb_property =
+		 */
+		#iommu-cells = <0>;
+	};
+
+	iommu-domain_cam {
+		compatible = "samsung,exynos-iommu-bus";
+		#address-cells = <2>;
+		#size-cells = <1>;
+		ranges;
+		domain-clients = <>;
+	};
+
+	sysmmu_cam0: sysmmu@12D10000 {
+		compatible = "samsung,exynos-sysmmu";
+		reg = <0x0 0x12D10000 0x3000>;
+		interrupts = <0 279 0>, <0 280 0>;
+		/*
+		clock-names = "aclk";
+		clocks = <&clock GATE_IS_CAM_SYSMMU_CAM0>;
+		 */
+		port-name = "CAM0";
+		sysmmu,secure-irq;
+		sysmmu,secure_base = <0x12D00000>;
+		/* Dual CAM scenario */
+		/*
+		sysmmu,tlb_property =
+		 */
+		#iommu-cells = <0>;
+	};
+
+	sysmmu_cam1: sysmmu@12D20000 {
+		compatible = "samsung,exynos-sysmmu";
+		reg = <0x0 0x12D20000 0x3000>;
+		interrupts = <0 282 0>;
+		/*
+		clock-names = "aclk";
+		clocks = <&clock GATE_IS_CAM_SYSMMU_CAM1>;
+		 */
+		port-name = "CAM1";
+		/*
+		sysmmu,tlb_property =
+		 */
+		#iommu-cells = <0>;
+	};
+
+	sysmmu_isp: sysmmu@13050000 {
+		compatible = "samsung,exynos-sysmmu";
+		reg = <0x0 0x13050000 0x3000>;
+		interrupts = <0 298 0>, <0 299 0>;
+		/*
+		clock-names = "aclk";
+		clocks = <&clock GATE_IS_ISPLP_SMMU_ISPLP>;
+		 */
+		port-name = "ISP";
+		sysmmu,secure-irq;
+		sysmmu,secure_base = <0x13060000>;
+		/*
+		sysmmu,tlb_property =
+		 */
+		#iommu-cells = <0>;
+	};
+
+	sysmmu_dcam: sysmmu@14230000 {
+		compatible = "samsung,exynos-sysmmu";
+		reg = <0x0 0x14230000 0x3000>;
+		interrupts = <0 248 0>, <0 249 0>;
+		/*
+		clock-names = "aclk";
+		clocks = <&clock GATE_SMMU_SRDZ>;
+		 */
+		port-name = "DCP, SRDZ";
+		sysmmu,secure-irq;
+		sysmmu,secure_base = <0x14250000>;
+		/*
+		sysmmu,tlb_property =
+		 */
+		#iommu-cells = <0>;
 	};
 
 	rtc@16490000 {
