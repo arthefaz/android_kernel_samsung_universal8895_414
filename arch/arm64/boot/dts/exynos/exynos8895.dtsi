@@ -2037,6 +2037,7 @@
 		clocks = <&clock GATE_SMMU_ABOX>;
 		 */
 		port-name = "Abox";
+		sysmmu,no-suspend;
 		/*
 		sysmmu,tlb_property =
 		 */
