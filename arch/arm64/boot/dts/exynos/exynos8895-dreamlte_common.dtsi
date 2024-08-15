@@ -274,6 +274,11 @@
 		};
 	};
 
+	usb_notifier {
+		compatible = "samsung,usb-notifier";
+		udc = <&udc>;
+	};
+
 	pinctrl@11050000 {
 		phy_port: phy-port {
 			samsung,pins = "gpi1-7";
