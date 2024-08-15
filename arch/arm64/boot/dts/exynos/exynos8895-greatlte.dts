@@ -1,0 +1,23 @@
+/*
+ * SAMSUNG EXYNOS8895 board device tree source
+ *
+ * Copyright (c) 2016 Samsung Electronics Co., Ltd.
+ *		http://www.samsung.com
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 as
+ * published by the Free Software Foundation.
+*/
+
+/dts-v1/;
+#include "exynos8895-greatlte_common.dtsi"
+
+/ {
+	model = "Samsung SM-N950F board based on EXYNOS8895";
+	model_info-chip = <8895>;
+	model_info-platform = "android";
+	model_info-subtype = "samsung";
+	model_info-hw_rev = <6>;
+	model_info-hw_rev_end = <8>;
+	compatible = "samsung, SM-N950F rev0.4", "samsung,EXYNOS8895";
+};

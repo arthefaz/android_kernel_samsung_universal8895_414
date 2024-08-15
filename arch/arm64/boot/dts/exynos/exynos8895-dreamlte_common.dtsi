@@ -1,0 +1,49 @@
+/*
+ * SAMSUNG EXYNOS8895 board device tree source
+ *
+ * Copyright (c) 2016 Samsung Electronics Co., Ltd.
+ *		http://www.samsung.com
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 as
+ * published by the Free Software Foundation.
+*/
+
+#include "exynos8895.dtsi"
+
+/ {
+	model = "Samsung UNIVERSAL8895 board based on EXYNOS8895";
+	compatible = "samsung,exynos8895", "samsung,UNIVERSAL8895";
+
+	memory@80000000 {
+		device_type = "memory";
+		reg = <0x0 0x80000000 0x3C800000>;
+	};
+
+	memory@C0000000 {
+		device_type = "memory";
+		reg = <0x0 0xC0000000 0x40000000>;
+	};
+
+	memory@880000000 {
+		device_type = "memory";
+		reg = <0x00000008 0x80000000 0x80000000>;
+	};
+
+	chosen {
+		bootargs = "earlycon=exynos4210,0x10430000 console=ttySAC0,115200n8 root=/dev/ram0 clk_ignore_unused ess_setup=0x86000000 androidboot.hardware=samsungexynos8895";
+		linux,initrd-start = <0x82000000>;
+		linux,initrd-end = <0x820FFFFF>;
+	};
+
+	fixed-rate-clocks {
+		oscclk {
+			compatible = "samsung,exynos8895-oscclk";
+			clock-frequency = <26000000>;
+		};
+	};
+
+	serial_0: uart@10430000 {
+		status = "okay";
+	};
+};
