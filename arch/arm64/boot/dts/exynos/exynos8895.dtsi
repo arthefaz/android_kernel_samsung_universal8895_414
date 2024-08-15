@@ -1775,6 +1775,20 @@
 		#iommu-cells = <0>;
 	};
 
+	/* SPEEDY IP_BATCHER_AP */
+	speedy@15B50000 {
+		compatible = "samsung,exynos-speedy";
+		reg = <0x0 0x15B50000 0x2000>;
+		interrupts = <0 109 0>;
+		#address-cells = <1>;
+		#size-cells = <0>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&speedy_bus>;
+		clocks = <&clock GATE_SPEEDY_BATCHER_WRAP_BATCHER_AP>;
+		clock-names = "gate_speedy";
+		status = "disabled";
+	};
+
 	iommu-domain_vpu {
 		compatible = "samsung,exynos-iommu-bus";
 		#dma-address-cells = <1>;
