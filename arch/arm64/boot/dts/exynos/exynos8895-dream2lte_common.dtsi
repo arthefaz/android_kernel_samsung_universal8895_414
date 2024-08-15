@@ -15,6 +15,11 @@
 	model = "Samsung UNIVERSAL8895 board based on EXYNOS8895";
 	compatible = "samsung,exynos8895", "samsung,UNIVERSAL8895";
 
+	ect {
+		parameter_address = <0xA0000000>;
+		parameter_size = <0x19000>;
+	};
+
 	memory@80000000 {
 		device_type = "memory";
 		reg = <0x0 0x80000000 0x3C800000>;
