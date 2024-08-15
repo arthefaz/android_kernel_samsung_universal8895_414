@@ -144,6 +144,10 @@
 		status = "okay";
 	};
 
+	speedy@15B50000{
+		status = "okay";
+	};
+
 	exynos_rgt {
 		compatible = "samsung,exynos-rgt";
 	};
