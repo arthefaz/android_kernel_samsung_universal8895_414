@@ -18,6 +18,8 @@
 
 #ifdef CONFIG_SOC_EXYNOS9610
 #include "ufs-dbg-9610.h"
+#elif CONFIG_SOC_EXYNOS8895
+#include "ufs-dbg-8895.h"
 #else
 #include "ufs-dbg-9810.h"
 #endif
