@@ -1,0 +1,29 @@
+/*
+ * SAMSUNG EXYNOS9810 board device tree source
+ *
+ * Copyright (c) 2017 Samsung Electronics Co., Ltd.
+ *		http://www.samsung.com
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 as
+ * published by the Free Software Foundation.
+ */
+
+/dts-v1/;
+#include "exynos9810-device_common.dtsi"
+
+/ {
+	model = "Samsung Crown rev0.6 board based on EXYNOS9810";
+	model_info-chip = <9810>;
+	model_info-platform = "android";
+	model_info-subtype = "samsung";
+	model_info-hw_rev = <26>;
+	model_info-hw_rev_end = <255>;
+	compatible = "Samsung, Crown rev0.6", "Samsung,EXYNOS9810";
+
+	// The Galaxy Note9 has 6GB of RAM
+	memory@900000000 {
+		device_type = "memory";
+		reg = <0x00000009 0x00000000 0x0>;
+	};
+};

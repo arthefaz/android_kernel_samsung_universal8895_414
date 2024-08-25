@@ -1,0 +1,23 @@
+/*
+ * SAMSUNG EXYNOS9810 board device tree source
+ *
+ * Copyright (c) 2017 Samsung Electronics Co., Ltd.
+ *		http://www.samsung.com
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 as
+ * published by the Free Software Foundation.
+ */
+
+/dts-v1/;
+#include "exynos9810-device_common.dtsi"
+
+/ {
+	model = "Samsung Star rev26 board based on EXYNOS9810";
+	model_info-chip = <9810>;
+	model_info-platform = "android";
+	model_info-subtype = "samsung";
+	model_info-hw_rev = <26>;
+	model_info-hw_rev_end = <255>;
+	compatible = "Samsung, Star rev26", "Samsung,EXYNOS9810";
+};

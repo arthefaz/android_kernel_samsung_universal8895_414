@@ -11,6 +11,11 @@ dtb-$(CONFIG_SOC_EXYNOS8895) += \
 
 dtb-$(CONFIG_SOC_EXYNOS9610) += exynos9610-erd9610.dtb
 
+dtb-$(CONFIG_SOC_EXYNOS9810) += \
+	exynos9810-star2lte.dtb	\
+	exynos9810-starlte.dtb	\
+	exynos9810-crownlte.dtb
+
 always		:= $(dtb-y)
 subdir-y	:= $(dts-dirs)
 clean-files	:= *.dtb
