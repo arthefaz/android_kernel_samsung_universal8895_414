@@ -35,6 +35,11 @@
 		pinctrl8 = &pinctrl_8;
 	};
 
+	chipid@10000000 {
+		compatible = "samsung,exynos9810-chipid";
+		reg = <0x0 0x10000000 0x100>;
+	};
+
 	arm-pmu {
 		compatible = "arm,armv8-pmuv3";
 		interrupts = <0 INTREQ__CPUCL1_PMUIRQ_0 4>,
