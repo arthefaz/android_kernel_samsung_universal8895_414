@@ -413,8 +413,6 @@ struct cmucal_clkout {
 	unsigned int		en;
 };
 
-#define ARRAY_SIZE_OR_0(a) (a != NULL ? sizeof(a) / sizeof((a)[0]) : 0)
-
 #define CMUCAL_VCLK(_id, _lut, _list, _seq, _switch) \
 [_id & MASK_OF_ID] = {	\
 	.id		= _id,						\
@@ -422,7 +420,7 @@ struct cmucal_clkout {
 	.lut		= _lut,						\
 	.list		= _list,					\
 	.seq		= _seq,						\
-	.num_rates	= ARRAY_SIZE_OR_0(_lut),			\
+	.num_rates	= (sizeof(_lut) / sizeof((_lut)[0])),		\
 	.num_list	= (sizeof(_list) / sizeof((_list)[0])),		\
 	.switch_info	= _switch,					\
 	.ops		= NULL,						\
@@ -435,8 +433,8 @@ struct cmucal_clkout {
 	.lut		= _lut,						\
 	.list		= _list,					\
 	.seq		= _seq,						\
-	.num_rates	= ARRAY_SIZE_OR_0(_lut),			\
-	.num_list	= ARRAY_SIZE_OR_0(_list),			\
+	.num_rates	= (sizeof(_lut) / sizeof((_lut)[0])),		\
+	.num_list	= (sizeof(_list) / sizeof((_list)[0])),		\
 	.switch_info	= _switch,					\
 	.ops		= NULL,						\
 	.margin_id	= _margin_id,					\
@@ -494,7 +492,7 @@ struct cmucal_clkout {
 	.clk.status_idx	= _so,				\
 	.clk.enable_idx	= _eo,				\
 	.pid		= _pids,			\
-	.num_parents	= ARRAY_SIZE_OR_0(_pids)	\
+	.num_parents	= (sizeof(_pids) / sizeof((_pids)[0])), \
 }
 
 #define CLK_DIV(_id, _pid, _o, _so, _eo)		\
@@ -528,7 +526,7 @@ struct cmucal_clkout {
 	.ignore_idx     = _ig,                          \
 }
 #else
-#define CLK_QCH(_id, _o, _so, _eo, _ig)			\
+#define CLK_QCH(_id, _o, _so, _eo)			\
 [_id & MASK_OF_ID] = {	\
 	.clk.id		= _id,				\
 	.clk.name	= #_id,				\
