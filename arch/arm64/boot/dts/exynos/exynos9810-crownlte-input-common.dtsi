@@ -42,7 +42,6 @@
 		pinctrl-0 = <&key_wink &key_vol &key_power>;
 		button@1 {
 			label = "gpio-keys: KEY_WINK";
-			linux,code = <KEY_WINK>;
 			gpios = <&gpa0 6 0xf>;
 			gpio-key,wakeup = <1>;
 		};
