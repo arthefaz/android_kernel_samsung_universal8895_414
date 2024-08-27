@@ -27,6 +27,11 @@ dtb-$(CONFIG_SOC_EXYNOS3830) += exynos3830.dtb \
 				exynos3830-e850-96-revb.dtbo \
 				exynos3830-e850-96-revc.dtbo \
 
+dtb-$(CONFIG_SOC_EXYNOS9810) += \
+				exynos9810-crownlte_eur_open_26.dtb \
+				exynos9810-star2lte_eur_open_26.dtb \
+				exynos9810-starlte_eur_open_26.dts
+
 dtb-$(CONFIG_SOC_EXYNOS3830) += exynos3830-cramfs-smdk3830.dtb
 
 always		:= $(dtb-y) $(dtbo-y)
