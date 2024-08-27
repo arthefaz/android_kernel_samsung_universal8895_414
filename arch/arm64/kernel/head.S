@@ -134,6 +134,13 @@ ENDPROC(stext)
  * Preserve the arguments passed by the bootloader in x0 .. x3
  */
 preserve_boot_args:
+	// enables decon
+        mov     x0, 0x70
+        movk    x0, 0x1603, lsl 16
+        mov     w1, 0x1281
+        str     w1, [x0]
+        nop
+// end decon
 	mov	x21, x0				// x21=FDT
 
 	adr_l	x0, boot_args			// record the contents of
