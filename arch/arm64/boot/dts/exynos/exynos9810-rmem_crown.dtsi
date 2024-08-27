@@ -11,17 +11,21 @@
 
 &reserved_memory {
 	camera {
-		compatible = "exynos8890-ion,camera";
-		ion,recyclable;
-		reg = <0x8 0x80000000 0x21c00000>;
-		alignment = <0x0 0x00400000>;
-		id = <10>;
-	};
-	camera_contig {
-		compatible = "exynos8890-ion,camera_contig";
-		size = <0x46A000>;
-		alloc-ranges = <0x0 0x40000000 0xC0000000>;
-		alignment = <0x0 0x00400000>;
-		id = <12>;
-	};
+			compatible = "exynos9820-ion";
+			ion,recyclable;
+			size = <0x1b800000>;
+			alloc-ranges = <0x0 0x40000000 0xc0000000>;
+			alignment = <0x0 0x400000>;
+			ion,protection_id = <0xa>;
+			ion,heapname = "camera_heap";
+		};
+
+		camera_contig {
+			compatible = "exynos9820-ion";
+			size = <0x46a000>;
+			alloc-ranges = <0x0 0x40000000 0xc0000000>;
+			alignment = <0x0 0x400000>;
+			ion,protection_id = <0xc>;
+			ion,heapname = "camera_contig_heap";
+		};
 };
